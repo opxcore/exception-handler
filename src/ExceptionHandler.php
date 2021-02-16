@@ -74,20 +74,20 @@ class ExceptionHandler implements ExceptionHandlerInterface
     {
         switch ($this->app->outputMode()) {
             case AppInterface::APP_OUTPUT_XML:
-                $handler = new ConsoleHandler();
+                $handler = new XmlHandler();
                 break;
             case AppInterface::APP_OUTPUT_SOAP:
-                $handler = new HtmlHandler();
+                $handler = new SoapHandler();
                 break;
             case AppInterface::APP_OUTPUT_CONSOLE:
-                $handler = new JsonHandler();
+                $handler = new ConsoleHandler();
                 break;
             case AppInterface::APP_OUTPUT_JSON:
-                $handler = new SoapHandler();
+                $handler = new JsonHandler();
                 break;
             case AppInterface::APP_OUTPUT_HTTP:
             default:
-                $handler = new XmlHandler();
+                $handler = new HtmlHandler();
                 break;
         }
 
