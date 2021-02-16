@@ -16,8 +16,9 @@ class HtmlHandler extends Handler
     {
         $title = $this->getType();
         $message = $this->getMessage();
+        $styles = file_get_contents(dirname(__DIR__) . '/Resources/styles/styles.css');
 
-        require '../Resources/views/debug.html.php';
+        require dirname(__DIR__) . '/Resources/views/debug.html.php';
     }
 
 }
