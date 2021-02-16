@@ -8,18 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace OpxCore\ExceptionHandler\Formatter;
+namespace OpxCore\ExceptionHandler\Handler;
 
-use Throwable;
-
-interface FormatterInterface
+class XmlHandler extends Handler
 {
-    /**
-     * Format throwable.
-     *
-     * @param Throwable $e
-     *
-     * @return  mixed
-     */
-    public function format(Throwable $e);
+
 }

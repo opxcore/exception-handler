@@ -8,18 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace OpxCore\ExceptionHandler\Output;
+namespace OpxCore\ExceptionHandler\Handler;
 
-use Throwable;
-
-interface OutputInterface
+class JsonHandler extends Handler
 {
-    /**
-     * Output formatted throwable.
-     *
-     * @param mixed $content
-     *
-     * @return  mixed
-     */
-    public function output($content);
+
 }

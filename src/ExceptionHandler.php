@@ -10,21 +10,15 @@
 
 namespace OpxCore\ExceptionHandler;
 
+use OpxCore\ExceptionHandler\Interfaces\ExceptionHandlerInterface;
 use OpxCore\ExceptionHandler\Exceptions\ErrorException;
 use OpxCore\App\Interfaces\AppInterface;
-use OpxCore\ExceptionHandler\Formatter\FormatterInterface;
-use OpxCore\ExceptionHandler\Formatter\Console\Formatter as ConsoleFormatter;
-use OpxCore\ExceptionHandler\Formatter\Html\Formatter as HtmlFormatter;
-use OpxCore\ExceptionHandler\Formatter\Json\Formatter as JsonFormatter;
-use OpxCore\ExceptionHandler\Formatter\Soap\Formatter as SoapFormatter;
-use OpxCore\ExceptionHandler\Formatter\Xml\Formatter as XmlFormatter;
-use OpxCore\ExceptionHandler\Output\Console\Output as ConsoleOutput;
-use OpxCore\ExceptionHandler\Output\Html\Output as HtmlOutput;
-use OpxCore\ExceptionHandler\Output\Json\Output as JsonOutput;
-use OpxCore\ExceptionHandler\Output\OutputInterface;
-use OpxCore\ExceptionHandler\Output\Soap\Output as SoapOutput;
-use OpxCore\ExceptionHandler\Output\Xml\Output as XmlOutput;
-use OpxCore\ExceptionHandler\Interfaces\ExceptionHandlerInterface;
+use OpxCore\ExceptionHandler\Handler\HandlerInterface;
+use OpxCore\ExceptionHandler\Handler\ConsoleHandler;
+use OpxCore\ExceptionHandler\Handler\HtmlHandler;
+use OpxCore\ExceptionHandler\Handler\JsonHandler;
+use OpxCore\ExceptionHandler\Handler\SoapHandler;
+use OpxCore\ExceptionHandler\Handler\XmlHandler;
 use Throwable;
 
 class ExceptionHandler implements ExceptionHandlerInterface
@@ -74,39 +68,35 @@ class ExceptionHandler implements ExceptionHandlerInterface
     /**
      * Render throwable for application selected output.
      *
-     * @param Throwable $e
+     * @param Throwable $throwable
      */
-    protected function render(Throwable $e): void
+    protected function render(Throwable $throwable): void
     {
         switch ($this->app->outputMode()) {
             case AppInterface::APP_OUTPUT_XML:
-                $formatter = new ConsoleFormatter();
-                $output = new ConsoleOutput();
+                $handler = new ConsoleHandler();
                 break;
             case AppInterface::APP_OUTPUT_SOAP:
-                $formatter = new HtmlFormatter();
-                $output = new HtmlOutput();
+                $handler = new HtmlHandler();
                 break;
             case AppInterface::APP_OUTPUT_CONSOLE:
-                $formatter = new JsonFormatter();
-                $output = new JsonOutput();
+                $handler = new JsonHandler();
                 break;
             case AppInterface::APP_OUTPUT_JSON:
-                $formatter = new SoapFormatter();
-                $output = new SoapOutput();
+                $handler = new SoapHandler();
                 break;
             case AppInterface::APP_OUTPUT_HTTP:
             default:
-                $formatter = new XmlFormatter();
-                $output = new XmlOutput();
+                $handler = new XmlHandler();
                 break;
         }
 
-        /** @var FormatterInterface $content */
-        $content = $formatter->format($e);
+        /** @var HandlerInterface $handler */
+        $handler->setThrowable($throwable);
+        $handler->setDebugMode($this->app->isDebugMode());
+        $handler->setRootPath($this->app->path());
 
-        /** @var OutputInterface $output */
-        $output->output($content);
+        $handler->render();
     }
 
     /**
