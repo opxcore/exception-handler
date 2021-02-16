@@ -94,9 +94,5 @@ abstract class Handler implements HandlerInterface
 //    {
 //        $this->throwable->getPrevious();
 //    }
-    public function render(): void
-    {
-        echo "<h1>" . $this->getType() . "</h1>";
-        echo "<h2>" . $this->getMessage() . "</h2>";
-    }
+
 }

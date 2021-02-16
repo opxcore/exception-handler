@@ -12,5 +12,12 @@ namespace OpxCore\ExceptionHandler\Handler;
 
 class HtmlHandler extends Handler
 {
+    public function render(): void
+    {
+        $title = $this->getType();
+        $message = $this->getMessage();
+
+        require '../Resources/views/debug.html.php';
+    }
 
 }
