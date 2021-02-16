@@ -21,6 +21,7 @@
   ],
   "require": {
     "php": "^7.4",
+    "opxcore/app-interface": "^1.0.4",
     "opxcore/exception-handler-interface": "dev-main"
   },
   "require-dev": {
