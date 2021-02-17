@@ -19,7 +19,8 @@ class HtmlHandler extends Handler
         $title = $this->getType();
         $message = $this->getMessage();
 
-        $previous = array_slice($this->stack, 1);
+        $previous = array_reverse($this->stack);
+        $previous = array_slice($previous, 1);
 
         $frames = $this->getFrames();
 
