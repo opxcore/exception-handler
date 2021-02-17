@@ -9,7 +9,6 @@
 
 window.onload = function () {
     const items = document.querySelectorAll('.handler__trace-item-title');
-
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('click', toggleCodeVisibility);
     }
@@ -17,8 +16,9 @@ window.onload = function () {
 
 function toggleCodeVisibility(event) {
     const id = event.target.dataset.index;
-    document.querySelectorAll('.handler__trace-code-active').map(code => {
-        code.classList.remove('handler__trace-code-active');
-    });
+    const items = document.querySelectorAll('.handler__trace-item-title');
+    for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove('handler__trace-code-active');
+    }
     document.querySelector('.handler__trace-code[data-index="' + id + '"]').classList.add('handler__trace-code-active');
 }
