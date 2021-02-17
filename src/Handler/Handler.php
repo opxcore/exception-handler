@@ -146,7 +146,7 @@ abstract class Handler implements HandlerInterface
 
         for ($i = $start; $i <= $end; $i++) {
             $stack[] = [
-                'line' => $content[$i],
+                'line' => htmlspecialchars(rtrim($content[$i], "\ \t\n\r\0\x0B")),
                 'number' => $i + 1,
                 'error' => $i + 1 === $line,
             ];

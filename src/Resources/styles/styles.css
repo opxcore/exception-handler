@@ -268,25 +268,50 @@ html, body {
 }
 
 .handler__trace-code {
-    margin: 0;
+    margin: 1rem 0 0;
+    background-color: #333;
+    overflow: auto;
+    box-sizing: border-box;
+    display: none;
 }
 
 .handler__trace-code-active {
-    margin: 0;
+    display: block;
 }
 
 .handler__trace-code-line {
     margin: 0;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    line-height: 1.6rem;
 }
 
 .handler__trace-code-line-error {
-    margin: 0;
 }
 
 .handler__trace-code-line-number {
     margin: 0;
+    display: inline-block;
+    text-align: right;
+    width: 3.5rem;
+    height: 1.6rem;
+    vertical-align: top;
+    font-size: 0.8rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+    color: #afafaf;
+    background-color: #444444;
 }
 
 .handler__trace-code-line-text {
-    margin: 0;
+    display: inline-block;
+    color: #dedede;
+}
+
+handler__trace-code-line-error .handler__trace-code-line-number {
+    background-color: #5f0202 !important;
+}
+
+handler__trace-code-line-error .handler__trace-code-line-text {
+    background-color: #5f0202 !important;
 }
