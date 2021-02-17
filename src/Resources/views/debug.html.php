@@ -21,14 +21,15 @@
         <h2 class="handler__message"><?php echo $message ?></h2>
     </div>
     <div class="handler__block">
-        <h2 class="handler__title">Stack trace</h2>
+        <h2 class="handler__block-title">Stack trace</h2>
         <div class="handler__trace">
             <?php foreach ($frames as $index => $frame) { ?>
                 <div class="handler__trace-item">
                     <p class="handler__trace-item-title">
                         <span class="handler__trace-item-title-index"><?php echo $frame['index']; ?></span>
-                        <span class="handler__trace-item-title-file"><?php echo $frame['file']; ?></span>
-                        <span class="handler__trace-item-title-line"><?php echo $frame['line']; ?></span>
+                        <span class="handler__trace-item-title-file"><?php echo $frame['file']; ?>
+                            <span class="handler__trace-item-title-line"><?php echo $frame['line']; ?></span>
+                        </span>
                     </p>
                     <div class="handler__trace-item"></div>
 

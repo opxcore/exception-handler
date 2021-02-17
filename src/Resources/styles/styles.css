@@ -187,7 +187,15 @@ html, body {
     margin: 1rem;
     font-weight: 400;
     letter-spacing: 0.05rem;
-    font-size: 1.8rem
+    font-size: 1.8rem;
+    color:#d21010
+}
+
+.handler__block-title {
+    margin: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+    font-size: 1.4rem;
 }
 
 .handler__message {
@@ -209,14 +217,18 @@ html, body {
 .handler__trace-item-title {
     margin: 0;
     font-size: 1rem;
+    white-space: nowrap;
+    line-height: 2rem;
 }
 
 .handler__trace-item-title-index {
-    margin: 0 0.5rem;
-    padding: 0 0 0.3rem;
+    margin: 0 0.5rem 0 0;
+    padding: 0 0.5rem 0 0;
     box-sizing: border-box;
     display: inline-block;
     width: 3rem;
+    font-size: 0.8rem;
+    color: #133d9e;
     text-align: right;
     border-right: 1px solid #c1c1c1;
 }
