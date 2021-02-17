@@ -10,6 +10,7 @@
 
 namespace OpxCore\ExceptionHandler\Handler;
 
+use OpxCore\ExceptionHandler\Exceptions\ErrorException;
 use Throwable;
 
 abstract class Handler implements HandlerInterface
@@ -61,7 +62,15 @@ abstract class Handler implements HandlerInterface
 
     public function getType(): string
     {
-        return get_class($this->throwable);
+        $type = get_class($this->throwable);
+
+        // If class of throwable is OpxCore\ExceptionHandler\Exceptions\ErrorException
+        // Error was caught. Change type to Error.
+        if ($type === ErrorException::class) {
+            $type = 'Error';
+        }
+
+        return $type;
     }
 
     public function getMessage(): string
@@ -69,6 +78,23 @@ abstract class Handler implements HandlerInterface
         return $this->throwable->getMessage();
     }
 
+    public function getFrames(): array
+    {
+        $trace = $this->throwable->getTrace();
+
+        foreach ($trace as $index => &$entry) {
+            $file = $entry['file'];
+            $line = $entry['line'];
+            $code = [];
+            $entry = [
+                'file' => $file,
+                'line' => $line,
+                'code' => $code,
+            ];
+        }
+
+        return $trace;
+    }
 //    public function getCode(): int
 //    {
 //        $this->throwable->getCode();

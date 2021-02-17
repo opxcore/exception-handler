@@ -14,9 +14,10 @@ class HtmlHandler extends Handler
 {
     public function render(): void
     {
+        $styles = file_get_contents(dirname(__DIR__) . '/Resources/styles/styles.css');
         $title = $this->getType();
         $message = $this->getMessage();
-        $styles = file_get_contents(dirname(__DIR__) . '/Resources/styles/styles.css');
+        $frames = $this->getFrames();
 
         require dirname(__DIR__) . '/Resources/views/debug.html.php';
     }
