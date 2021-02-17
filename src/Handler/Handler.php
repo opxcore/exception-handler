@@ -113,7 +113,7 @@ abstract class Handler implements HandlerInterface
         foreach ($trace as $index => &$entry) {
             $file = $this->removeRootPath($entry['file']);
             $line = $entry['line'];
-            $code = [];
+            $code = $this->getFileContent($entry['file'], $entry['line']);
             $entry = [
                 'index' => $index,
                 'file' => $file,
@@ -124,6 +124,37 @@ abstract class Handler implements HandlerInterface
 
         return array_reverse($trace);
     }
+
+    public function getFileContent(string $file, int $line): ?array
+    {
+        if (!file_exists($file)) {
+            return null;
+        }
+
+        $content = @file_get_contents($file);
+
+        if ($content === false) {
+            return null;
+        }
+
+        $content = explode("\n", $content);
+
+        $start = max($line - 11, 0);
+        $end = min($start + 20, count($content));
+
+        $stack = [];
+
+        for ($i = $start; $i <= $end; $i++) {
+            $stack[] = [
+                'line' => $content[$i],
+                'number' => $i + 1,
+                'error' => $i + 1 === $line,
+            ];
+        }
+
+        return $stack;
+    }
+
 //    public function getCode(): int
 //    {
 //        $this->throwable->getCode();
