@@ -182,3 +182,17 @@ html, body {
     border-radius: 5px;
     box-shadow: 0 3px 6px rgb(0 0 0 / 3%), 0 3px 6px rgb(0 0 0 / 8%)
 }
+
+.handler__title {
+    margin: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+    font-size: 1.8rem
+}
+
+.handler__message {
+    margin: 1rem;
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.03rem;
+}

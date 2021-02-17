@@ -19,6 +19,9 @@
         <h1 class="handler__title"><?php echo $title ?></h1>
         <h2 class="handler__message"><?php echo $message ?></h2>
     </div>
+    <div class="handler__block">
+        <h1 class="handler__title">Stack trace:</h1>
+    </div>
 </div>
 
 <script></script>
