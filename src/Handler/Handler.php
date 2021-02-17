@@ -83,7 +83,7 @@ abstract class Handler implements HandlerInterface
     public function removeRootPath(string $fullPath): string
     {
         if (strpos($fullPath, $this->rootPath) === 0) {
-            $fullPath = substr($fullPath, strlen($this->rootPath) - 1);
+            $fullPath = substr($fullPath, strlen($this->rootPath));
         }
 
         return $fullPath;
