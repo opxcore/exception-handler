@@ -18,6 +18,9 @@ class HtmlHandler extends Handler
         $script = file_get_contents(dirname(__DIR__) . '/Resources/scripts/script.js');
         $title = $this->getType();
         $message = $this->getMessage();
+
+        $previous = array_slice($this->stack, 1);
+
         $frames = $this->getFrames();
 
         require dirname(__DIR__) . '/Resources/views/debug.html.php';

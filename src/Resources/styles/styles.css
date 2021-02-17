@@ -206,6 +206,18 @@ html, body {
     line-height: 1.6rem;
 }
 
+.handler__previous {
+    margin: 0;
+}
+
+.handler__previous-title {
+    margin: 0;
+}
+
+.handler__previous-message {
+    margin: 0;
+}
+
 .handler__trace {
     margin: 1rem;
 }

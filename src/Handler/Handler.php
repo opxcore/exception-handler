@@ -143,7 +143,15 @@ abstract class Handler implements HandlerInterface
         return array_reverse($trace);
     }
 
-    public function getFileContent(string $file, int $line): ?array
+    /**
+     * Load limited contents of files.
+     *
+     * @param string $file
+     * @param int $line
+     *
+     * @return array|null
+     */
+    protected function getFileContent(string $file, int $line): ?array
     {
         if (!file_exists($file)) {
             return null;

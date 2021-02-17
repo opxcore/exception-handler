@@ -3,6 +3,7 @@
 /** @var string $script */
 /** @var string $title */
 /** @var string $message */
+/** @var array $previous */
 /** @var array $frames */
 ?>
 <!DOCTYPE html>
@@ -20,6 +21,13 @@
     <div class="handler__block">
         <h1 class="handler__title"><?php echo $title ?></h1>
         <h2 class="handler__message"><?php echo $message ?></h2>
+        <?php foreach ($previous as $previously) {
+            /** @var Throwable $previously */ ?>
+            <div class="handler__previous">
+                <p class="handler__previous-title"><?php echo get_class($previously) ?></p>
+                <p class="handler__previous-message"><?php echo $previously->getMessage() ?></p>
+            </div>
+        <?php } ?>
     </div>
     <div class="handler__block">
         <h2 class="handler__block-title">Stack trace</h2>
