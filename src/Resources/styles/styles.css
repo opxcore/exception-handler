@@ -308,10 +308,10 @@ html, body {
     color: #dedede;
 }
 
-handler__trace-code-line-error .handler__trace-code-line-number {
+.handler__trace-code-line-error .handler__trace-code-line-number {
     background-color: #5f0202 !important;
 }
 
-handler__trace-code-line-error .handler__trace-code-line-text {
+.handler__trace-code-line-error .handler__trace-code-line-text {
     background-color: #5f0202 !important;
 }

@@ -145,8 +145,11 @@ abstract class Handler implements HandlerInterface
         $stack = [];
 
         for ($i = $start; $i <= $end; $i++) {
+            $format = rtrim($content[$i], "\ \t\n\r\0\x0B");
+            $format = htmlspecialchars($format);
+            $format = str_replace([' ', "\t"], ['&nbsp;', '&nbsp;&nbsp;&nbsp;&nbsp;'], $format);
             $stack[] = [
-                'line' => htmlspecialchars(rtrim($content[$i], "\ \t\n\r\0\x0B")),
+                'line' => $format,
                 'number' => $i + 1,
                 'error' => $i + 1 === $line,
             ];
