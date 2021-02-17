@@ -106,7 +106,13 @@ abstract class Handler implements HandlerInterface
      */
     public function getFrames(): array
     {
-        $trace = $this->throwable->getTrace();
+        $throwable = $this->throwable;
+
+        while ($throwable->getPrevious() !== null){
+            $throwable = $throwable->getPrevious();
+        }
+
+        $trace = $throwable->getTrace();
 
         $trace = array_reverse($trace);
 
