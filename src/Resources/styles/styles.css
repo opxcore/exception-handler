@@ -197,3 +197,36 @@ html, body {
     letter-spacing: 0.03rem;
     line-height: 1.6rem;
 }
+
+.handler__trace {
+    margin: 1rem;
+}
+
+.handler__trace-item {
+    margin: 1rem 0 0;
+}
+
+.handler__trace-item-title {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.handler__trace-item-title-index {
+    margin: 0 0.5rem;
+    padding: 0 0 0.3rem;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 3rem;
+    text-align: right;
+    border-right: 1px solid #c1c1c1;
+}
+
+.handler__trace-item-title-file {
+    margin: 0;
+    display: inline-block;
+}
+
+.handler__trace-item-title-line {
+    margin: 0;
+    display: inline-block;
+}
