@@ -25,13 +25,13 @@
         <div class="handler__trace">
             <?php foreach ($frames as $index => $frame) { ?>
                 <div class="handler__trace-item">
-                    <p class="handler__trace-item-title" data-index="<?php echo $index; ?><">
+                    <p class="handler__trace-item-title" data-index="<?php echo $index; ?>">
                         <span class="handler__trace-item-title-index"><?php echo $frame['index']; ?></span>
                         <span class="handler__trace-item-title-file"><?php echo $frame['file']; ?>
                             <span class="handler__trace-item-title-line"><?php echo $frame['line']; ?></span>
                         </span>
                     </p>
-                    <div class="handler__trace-code <?php echo $index === 0 ? 'handler__trace-code-active' : ''; ?>" data-index="<?php echo $index; ?>>
+                    <div class="handler__trace-code <?php echo $index === 0 ? 'handler__trace-code-active' : ''; ?>" data-index="<?php echo $index; ?>">
                         <?php foreach ($frame['code'] as $line) { ?>
                             <p class="handler__trace-code-line <?php echo $line['error'] ? 'handler__trace-code-line-error' : '' ?>">
                                 <span class="handler__trace-code-line-number"><?php echo $line['number']; ?></span>
