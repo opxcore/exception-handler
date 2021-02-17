@@ -10,9 +10,9 @@
 window.onload = function () {
     const items = document.querySelectorAll('.handler__trace-item-title');
 
-    items.map(item => {
-        item.addEventListener('click', toggleCodeVisibility);
-    });
+    for (let i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', toggleCodeVisibility);
+    }
 }
 
 function toggleCodeVisibility(event) {
