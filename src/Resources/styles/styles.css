@@ -188,7 +188,7 @@ html, body {
     font-weight: 400;
     letter-spacing: 0.05rem;
     font-size: 1.8rem;
-    color:#d21010
+    color: #d21010
 }
 
 .handler__block-title {
@@ -229,6 +229,8 @@ html, body {
     width: 3rem;
     font-size: 0.8rem;
     color: #133d9e;
+    line-height: 2rem;
+    vertical-align: middle;
     text-align: right;
     border-right: 1px solid #c1c1c1;
 }
@@ -236,9 +238,18 @@ html, body {
 .handler__trace-item-title-file {
     margin: 0;
     display: inline-block;
+    white-space: normal;
+    line-height: 1.4rem;
+    vertical-align: middle;
+    font-size: 0.9rem;
 }
 
 .handler__trace-item-title-line {
     margin: 0;
     display: inline-block;
+    color: #777777;
+}
+
+.handler__trace-item-title-line:before {
+    content: ':';
 }
