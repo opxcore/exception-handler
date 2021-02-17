@@ -22,7 +22,7 @@
   "require": {
     "php": "^7.4",
     "opxcore/app-interface": "^1.0.6",
-    "opxcore/exception-handler-interface": "dev-main"
+    "opxcore/exception-handler-interface": "^1.0.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5.0"
@@ -33,12 +33,6 @@
       "OpxCore\\Tests\\ExceptionHandler\\": "tests/"
     }
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "/storage/opxcore/exception-handler-interface/.git"
-    }
-  ],
   "prefer-stable": true,
   "minimum-stability": "dev"
 }
