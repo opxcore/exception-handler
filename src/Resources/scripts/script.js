@@ -15,7 +15,7 @@ window.onload = function () {
 }
 
 function toggleCodeVisibility(event) {
-    const id = event.target.dataset.index;
+    const id = this.dataset.index;
     const items = document.querySelectorAll('.handler__trace-code-active');
     for (let i = 0; i < items.length; i++) {
         items[i].classList.remove('handler__trace-code-active');
