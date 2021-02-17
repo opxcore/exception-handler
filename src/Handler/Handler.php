@@ -15,14 +15,17 @@ use Throwable;
 
 abstract class Handler implements HandlerInterface
 {
-    /** @var Throwable Throwable instance */
-    protected Throwable $throwable;
-
     /** @var bool Is exception throwing in debug or production mode */
     protected bool $debugMode = false;
 
     /** @var string Path to application root for removing from file paths */
     protected string $rootPath = '';
+
+    /** @var Throwable Throwable instance */
+    protected Throwable $throwable;
+
+    /** @var array Stack of throwable */
+    protected array $stack;
 
     /**
      * Set throwable instance.
@@ -34,6 +37,15 @@ abstract class Handler implements HandlerInterface
     public function setThrowable(Throwable $throwable): void
     {
         $this->throwable = $throwable;
+
+        $stack[] = $throwable;
+
+        while ($throwable->getPrevious() !== null) {
+            $throwable = $throwable->getPrevious();
+            $stack[] = $throwable;
+        }
+
+        $this->stack = array_reverse($stack);
     }
 
     /**
@@ -106,15 +118,15 @@ abstract class Handler implements HandlerInterface
      */
     public function getFrames(): array
     {
-        $throwable = $this->throwable;
-
-        while ($throwable->getPrevious() !== null){
-            $throwable = $throwable->getPrevious();
-        }
+        $throwable = $this->stack[0];
 
         $trace = $throwable->getTrace();
 
         $trace = array_reverse($trace);
+
+        if ($trace[0]['file'] !== $throwable->getFile() && $trace[0]['line'] !== $throwable->getLine()) {
+            array_unshift($trace, ['file' => $throwable->getFile(), 'line' => $throwable->getLine()]);
+        }
 
         foreach ($trace as $index => &$entry) {
             $file = $this->removeRootPath($entry['file']);
