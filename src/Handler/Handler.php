@@ -140,7 +140,7 @@ abstract class Handler implements HandlerInterface
         $content = explode("\n", $content);
 
         $start = max($line - 11, 0);
-        $end = min($start + 20, count($content));
+        $end = min($start + 20, count($content) - 1);
 
         $stack = [];
 
