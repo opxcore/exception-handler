@@ -73,27 +73,56 @@ abstract class Handler implements HandlerInterface
         return $type;
     }
 
+    /**
+     * Remove part from full file name to project root.
+     *
+     * @param string $fullPath
+     *
+     * @return  string
+     */
+    public function removeRootPath(string $fullPath): string
+    {
+        if (strpos($fullPath, $this->rootPath) === 0) {
+            $fullPath = substr($fullPath, strlen($this->rootPath) - 1);
+        }
+
+        return $fullPath;
+    }
+
+    /**
+     * Get throwable message.
+     *
+     * @return  string
+     */
     public function getMessage(): string
     {
         return $this->throwable->getMessage();
     }
 
+    /**
+     * Make frames for trace output
+     *
+     * @return  array
+     */
     public function getFrames(): array
     {
         $trace = $this->throwable->getTrace();
 
+        $trace = array_reverse($trace);
+
         foreach ($trace as $index => &$entry) {
-            $file = $entry['file'];
+            $file = $this->removeRootPath($entry['file']);
             $line = $entry['line'];
             $code = [];
             $entry = [
+                'index' => $index,
                 'file' => $file,
                 'line' => $line,
                 'code' => $code,
             ];
         }
 
-        return $trace;
+        return array_reverse($trace);
     }
 //    public function getCode(): int
 //    {

@@ -26,7 +26,7 @@
             <?php foreach ($frames as $index => $frame) { ?>
                 <div class="handler__trace-item">
                     <p class="handler__trace-item-title">
-                        <span class="handler__trace-item-title-index"><?php echo $index; ?></span>
+                        <span class="handler__trace-item-title-index"><?php echo $frame['index']; ?></span>
                         <span class="handler__trace-item-title-file"><?php echo $frame['file']; ?></span>
                         <span class="handler__trace-item-title-line"><?php echo $frame['line']; ?></span>
                     </p>
