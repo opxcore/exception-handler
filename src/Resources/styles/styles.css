@@ -217,12 +217,16 @@ html, body {
 .handler__previous:before {
     content: '';
     display: block;
-    width: 1rem;
-    height: 1rem;
+    width: 0.5rem;
+    height: 0.5rem;
     position: absolute;
     top: 0;
-    left: -0.5rem;
+    left: -0.3rem;
     transform: rotate(45deg);
+    box-sizing: border-box;
+    border-color: #d3371e;
+    border-style: solid;
+    border-width: 2px 0 0 2px;
 }
 
 .handler__previous-title {
