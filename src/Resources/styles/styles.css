@@ -266,3 +266,27 @@ html, body {
 .handler__trace-item-title-line:before {
     content: ': ';
 }
+
+.handler__trace-code {
+    margin: 0;
+}
+
+.handler__trace-code-active {
+    margin: 0;
+}
+
+.handler__trace-code-line {
+    margin: 0;
+}
+
+.handler__trace-code-line-error {
+    margin: 0;
+}
+
+.handler__trace-code-line-number {
+    margin: 0;
+}
+
+.handler__trace-code-line-text {
+    margin: 0;
+}

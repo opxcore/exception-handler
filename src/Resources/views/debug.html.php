@@ -23,22 +23,29 @@
     <div class="handler__block">
         <h2 class="handler__block-title">Stack trace</h2>
         <div class="handler__trace">
-            <?php foreach ($frames as $index => $frame) { ?>
-                <div class="handler__trace-item">
-                    <p class="handler__trace-item-title">
-                        <span class="handler__trace-item-title-index"><?php echo $frame['index']; ?></span>
-                        <span class="handler__trace-item-title-file"><?php echo $frame['file']; ?>
+            <?php foreach ($frames
+
+            as $index => $frame) { ?>
+            <div class="handler__trace-item">
+                <p class="handler__trace-item-title">
+                    <span class="handler__trace-item-title-index"><?php echo $frame['index']; ?></span>
+                    <span class="handler__trace-item-title-file"><?php echo $frame['file']; ?>
                             <span class="handler__trace-item-title-line"><?php echo $frame['line']; ?></span>
                         </span>
-                    </p>
-                    <div class="handler__trace-item"></div>
-
+                </p>
+                <div class="handler__trace-code <?php echo $index === 0 ? 'handler__trace-code-active' : ''; ?>">
+                    <?php foreach ($frame['code'] as $line) { ?>
+                        <p class="handler__trace-code-line <?php echo $line['error'] ? 'handler__trace-code-line-error' : '' ?>">
+                            <span class="handler__trace-code-line-number"><?php echo $line['number']; ?></span>
+                            <span class="handler__trace-code-line-text"><?php echo $line['line']; ?></span>
+                        </p>
+                    <?php } ?>
                 </div>
-            <?php } ?>
+                <?php } ?>
+            </div>
         </div>
     </div>
-</div>
 
-<script></script>
+    <script></script>
 </body>
 </html>
