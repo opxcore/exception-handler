@@ -15,6 +15,7 @@ class HtmlHandler extends Handler
     public function render(): void
     {
         $styles = file_get_contents(dirname(__DIR__) . '/Resources/styles/styles.css');
+        $script = file_get_contents(dirname(__DIR__) . '/Resources/scripts/script.js');
         $title = $this->getType();
         $message = $this->getMessage();
         $frames = $this->getFrames();
