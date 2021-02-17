@@ -122,11 +122,11 @@ abstract class Handler implements HandlerInterface
 
         $trace = $throwable->getTrace();
 
-        $trace = array_reverse($trace);
-
         if ($trace[0]['file'] !== $throwable->getFile() && $trace[0]['line'] !== $throwable->getLine()) {
             array_unshift($trace, ['file' => $throwable->getFile(), 'line' => $throwable->getLine()]);
         }
+
+        $trace = array_reverse($trace);
 
         foreach ($trace as $index => &$entry) {
             $file = $this->removeRootPath($entry['file']);
