@@ -219,10 +219,19 @@ html, body {
     font-size: 1rem;
     white-space: nowrap;
     line-height: 2rem;
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 4rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.handler__trace-item-title:hover {
+    background-color: #f3f6ff;
 }
 
 .handler__trace-item-title-index {
-    margin: 0 0.5rem 0 0;
     padding: 0 0.5rem 0 0;
     box-sizing: border-box;
     display: inline-block;
@@ -230,6 +239,10 @@ html, body {
     font-size: 0.8rem;
     color: #133d9e;
     line-height: 2rem;
+    position: absolute;
+    height: calc(100% - 0.4rem);
+    top: 0.2rem;
+    left: 0;
     vertical-align: middle;
     text-align: right;
     border-right: 1px solid #c1c1c1;
@@ -238,7 +251,7 @@ html, body {
 .handler__trace-item-title-file {
     margin: 0;
     display: inline-block;
-    white-space: normal;
+    white-space: initial;
     line-height: 1.4rem;
     vertical-align: middle;
     font-size: 0.9rem;
@@ -251,5 +264,5 @@ html, body {
 }
 
 .handler__trace-item-title-line:before {
-    content: ':';
+    content: ': ';
 }
