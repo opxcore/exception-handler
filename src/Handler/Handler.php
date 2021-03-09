@@ -129,15 +129,22 @@ abstract class Handler implements HandlerInterface
         $trace = array_reverse($trace);
 
         foreach ($trace as $index => &$entry) {
-            $file = $this->removeRootPath($entry['file']);
-            $line = $entry['line'];
-            $code = $this->getFileContent($entry['file'], $entry['line']);
-            $entry = [
-                'index' => $index,
-                'file' => $file,
-                'line' => $line,
-                'code' => $code,
-            ];
+            if (isset($entry['file'])) {
+                $file = $this->removeRootPath($entry['file']);
+                $line = $entry['line'];
+                $code = $this->getFileContent($entry['file'], $entry['line']);
+                $entry = [
+                    'index' => $index,
+                    'file' => $file,
+                    'line' => $line,
+                    'code' => $code,
+                ];
+            } else {
+                $entry = [
+                    'index' => $index,
+                    'function' => $entry['function'] ?? '???',
+                ];
+            }
         }
 
         return array_reverse($trace);
